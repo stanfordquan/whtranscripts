@@ -14,12 +14,20 @@ PRESIDENCY_BASE = "http://www.presidency.ucsb.edu/"
 
 ENDPOINTS = {
     "briefing": PRESIDENCY_BASE + "press_briefings.php",
-    "conference": PRESIDENCY_BASE + "news_conferences.php"
+    "conference": PRESIDENCY_BASE + "news_conferences.php",
+    "weekly": PRESIDENCY_BASE + "satradio.php",
+    "saps": PRESIDENCY_BASE + "saps.php",
+    "proclamations": PRESIDENCY_BASE + "proclamations.php",
+    "eo" : PRESIDENCY_BASE + "executive_orders.php"
 }
 
 START_YEARS = {
     "briefing": 1993,
-    "conference": 1929
+    "conference": 1929,
+    "weekly": 1982,
+    "saps": 1985,
+    "proclamations": 1789,
+    "eo": 1826
 }
 
 def norm_url(url):
@@ -75,7 +83,7 @@ def parse_args():
     parser.add_argument("--type", "-t",
         dest="doc_type",
         required=True,
-        choices=[ "conference", "briefing" ],
+        choices=["conference", "briefing", "weekly", "saps", "proclamations", "eo"],
         help="News conference or press briefing?")
     parser.add_argument("--dest",
         default=os.getcwd(),
